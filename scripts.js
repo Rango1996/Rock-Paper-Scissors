@@ -52,14 +52,15 @@ function playRound(playerSelection, computerSelection){
 function getPlayerChoice(){
     let validatedInput = false;
     while(validatedInput== false){
-        const choice = prompt("Rock Paper Scissors");
+        const choice = prompt("Rock, Paper, Scissors");
         if (choice==null){
             continue;
         }
-        if (options){
+        if (options.includes(choice.toLowerCase())){
             validatedInput=true;
-            return choice;
+            return choice.toLowerCase();
         }
+        validatedInput = false;
     }
 }
 
