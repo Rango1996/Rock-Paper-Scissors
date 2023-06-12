@@ -50,43 +50,35 @@ function playRound(playerSelection, computerSelection){
 }
 
 function getPlayerChoice(){
-while (true) {
-    try {
-    const choice = prompt("Rock, Paper or Scissors?");
-    if (choice===null) {
-        break;
+    let validatedInput = false;
+    while(validatedInput== false){
+        const choice = prompt("Rock, Paper, Scissors");
+        if (choice==null){
+            continue;
         }
-    if (options.includes(choice.toLowerCase())) {
-        return choice.toLocaleLowerCase();
-        } 
-    } catch (error) {
-        console.log("An error occured", error);
+        if (options.includes(choice.toLowerCase())){
+            validatedInput=true;
+            return choice.toLowerCase();
+        }
+        validatedInput = false;
     }
-}
 }
 
 function game(){
     let scorePlayer=0;
     let scoreComputer=0;
-    console.log("Ready to Play?");
-
+    console.log("Ready to Play?")
+    
     for (let i = 0; i < 5; i++) {
         const playerSelection=getPlayerChoice();
-        if (playerSelection===null) {
-            break;
-        }
-
         const computerSelection=getComputerChoice();
-        const result= playRound(playerSelection, computerSelection);
-        console.log(result);
-
-        if (result==="Player"){
+        console.log(playRound(playerSelection,computerSelection));
+        if (checkWinner(playerSelection,computerSelection) == "Player") {
             scorePlayer++;
-        } else if (result==="Computer") {
+        } else if (checkWinner(playerSelection, computerSelection) == "Computer") {
             scoreComputer++;
         }
     }
-
     console.log("Game Over")
     if (scorePlayer > scoreComputer) {
         console.log("You've won!")
