@@ -33,7 +33,7 @@ else {
 function playRound(playerSelection, computerSelection){
     const result = checkWinner(playerSelection, computerSelection);
     if (result=="draw"){
-        return "It's a Tie!";
+        return `It's a Tie! You both picked ${playerSelection.toLowerCase()}`;
     }
     else if (result=="Player"){
         return `You've won! ${playerSelection.toLowerCase()} beats ${computerSelection}!`;
@@ -65,12 +65,27 @@ function getPlayerChoice(){
 }
 
 function game(){
+    let scorePlayer=0;
+    let scoreComputer=0;
     console.log("Ready to Play?")
     for (let i = 0; i < 5; i++) {
         const playerSelection=getPlayerChoice();
         const computerSelection=getComputerChoice();
-        const result=playRound(playerSelection,computerSelection);
-        console.log(result);
+        console.log(playRound(playerSelection,computerSelection));
+        if (checkWinner(playerSelection,computerSelection) == "Player") {
+            scorePlayer++;
+        } else if (checkWinner(playerSelection, computerSelection) == "Computer") {
+            scoreComputer++;
+        }
+    }
+    console.log("Game Over")
+    if (scorePlayer > scoreComputer) {
+        console.log("You've won!")
+    } else if (scorePlayer < scoreComputer) {
+        console.log("You've lost")
+    }
+    else {
+        console.log("It's a draw!")
     }
 }
 
