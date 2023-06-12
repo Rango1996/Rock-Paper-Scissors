@@ -67,17 +67,25 @@ function getPlayerChoice(){
 function game(){
     let scorePlayer=0;
     let scoreComputer=0;
-    console.log("Ready to Play?")
+    console.log("Ready to Play?");
+
     for (let i = 0; i < 5; i++) {
         const playerSelection=getPlayerChoice();
+        if (playerSelection===null) {
+            break;
+        }
+
         const computerSelection=getComputerChoice();
-        console.log(playRound(playerSelection,computerSelection));
-        if (checkWinner(playerSelection,computerSelection) == "Player") {
+        const result= playRound(playerSelection, computerSelection);
+        console.log(result);
+
+        if (result==="Player"){
             scorePlayer++;
-        } else if (checkWinner(playerSelection, computerSelection) == "Computer") {
+        } else if (result==="Computer") {
             scoreComputer++;
         }
     }
+
     console.log("Game Over")
     if (scorePlayer > scoreComputer) {
         console.log("You've won!")
