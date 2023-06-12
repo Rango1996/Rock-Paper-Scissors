@@ -7,6 +7,7 @@ function getComputerChoice() {
 }
 
 function checkWinner(playerSelection, computerSelection){
+    playerSelection=playerSelection.toLowerCase();
     if (playerSelection==computerSelection){
         return "draw";
     }
@@ -35,10 +36,10 @@ function playRound(playerSelection, computerSelection){
         return "It's a Tie!";
     }
     else if (result=="Player"){
-        return `You've won! ${playerSelection} beats ${computerSelection}!`;
+        return `You've won! ${playerSelection.toLowerCase()} beats ${computerSelection}!`;
     }
     else if (result=="Computer"){
-        return `You've lost! ${computerSelection} beats ${playerSelection}!`;
+        return `You've lost! ${computerSelection} beats ${playerSelection.toLowerCase()}!`;
     }
     else if (result=="problem"){
         return "There's been an issue, are you sure you picked rock, paper or scissors?"
@@ -48,6 +49,13 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection,computerSelection));
+function game(){
+    console.log("Ready to Play?")
+    for (let i = 0; i < 5; i++) {
+        const playerSelection="rock";
+        const computerSelection=getComputerChoice();
+        playRound(playerSelection,computerSelection);
+    }
+}
+
+game()
