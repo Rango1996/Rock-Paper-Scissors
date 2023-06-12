@@ -50,18 +50,19 @@ function playRound(playerSelection, computerSelection){
 }
 
 function getPlayerChoice(){
-    let validatedInput = false;
-    while(validatedInput== false){
-        const choice = prompt("Rock, Paper, Scissors");
-        if (choice==null){
-            continue;
+while (true) {
+    try {
+    const choice = prompt("Rock, Paper or Scissors?");
+    if (choice===null) {
+        break;
         }
-        if (options.includes(choice.toLowerCase())){
-            validatedInput=true;
-            return choice.toLowerCase();
-        }
-        validatedInput = false;
+    if (options.includes(choice.toLowerCase())) {
+        return choice.toLocaleLowerCase();
+        } 
+    } catch (error) {
+        console.log("An error occured", error);
     }
+}
 }
 
 function game(){
