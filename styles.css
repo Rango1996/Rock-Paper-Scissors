@@ -1,0 +1,22 @@
+body {
+    background-color: grey;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.top {
+    text-align: center;
+}
+
+.BtnsOptions {
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.result {
+    text-align: center;
+}
+
+.restart {
+    display:flex;
+    justify-content: center;
+}
